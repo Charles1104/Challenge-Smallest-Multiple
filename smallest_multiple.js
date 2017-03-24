@@ -8,7 +8,48 @@
  */
 module.exports = function( ceiling ) {
   // do work here
+  let testNum = 0;
+  let lcmNum = 1;
 
+  for (var i = 2; i < ceiling; i++) {
+    lcmNum = lcm(lcmNum, i);
+  }
 
-  return 0;
+  function lcm(min, max) {
+    let gcdNum = gcd(min, max);
+
+    return min * max / gcdNum;
+  }
+
+  function gcd(a, b) {
+
+    if (a < 0) {
+      a = -a;
+      }
+
+    if (b < 0){
+      b = -b;
+    }
+
+    if (b > a){
+      var temp = a;
+      a = b;
+      b = temp;
+    }
+
+    while (true){
+      if (b === 0){
+        return a;
+      }
+      a %= b;
+      if (a === 0){
+        return b;
+      }
+      b %= a;
+    }
+
+  }
+
+  return lcmNum;
+
 };
